@@ -10,6 +10,6 @@ FROM debian:latest
 
 RUN apt-get update  && apt-get install -y libssl-dev
 
-COPY --from=builder /app/target/release/add /app/add
+COPY --from=builder /app/target/release/binary-tree-preorder-traversal /app/binary-tree-preorder-traversal
 
-CMD ["/app/add"]
+CMD ["/app/binary-tree-preorder-traversal"]
