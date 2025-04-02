@@ -1,0 +1,70 @@
+
+
+// Define the structure for a binary tree node
+#[derive(Debug)]
+struct Node {
+    value: i32,
+    left: Option<Box<Node>>,
+    right: Option<Box<Node>>,
+}
+
+impl Node {
+    // Constructor for a new node
+    fn new(value: i32) -> Self {
+        Node {
+            value,
+            left: None,
+            right: None,
+        }
+    }
+
+    // Function to perform preorder traversal
+    fn preorder(&self) {
+        // Print the current node's value
+        print!("{} ", self.value);
+
+        // Recursively traverse the left subtree
+        if let Some(ref left) = self.left {
+            left.preorder();
+        }
+
+        // Recursively traverse the right subtree
+        if let Some(ref right) = self.right {
+            right.preorder();
+        }
+    }
+}
+
+fn main() {
+    // Create the root node
+    let vec: Vec<i32> = vec![1, 2, 3, 4, 5, 0, 8, 0, 0, 6];
+    let mut root = Node::new(vec[0]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+
+    // Create the left and right children
+    root.left = Some(Box::new(Node::new(vec[1])));
+    root.right = Some(Box::new(Node::new(vec[2])));
+
+    // Create the left child's left and right children
+    for i in 3..vec.len() - 1 {
+        println!("{i}");
+    if let Some(ref mut left) = root.left {
+        if vec[i] !=  0  && left.left.is_none() && left.right.is_none(){
+           
+        left.left = Some(Box::new(Node::new(vec[i])));
+        left.right = Some(Box::new(Node::new(vec[i + 1])));
+    } }
+    if vec[i] == 0 {
+        continue;
+    }
+
+    // Create the right child's right child
+    if let Some(ref mut right) = root.right {
+     if vec[i] == 0 && right.right.is_none() {
+
+        right.right = Some(Box::new(Node::new(vec[i])));
+    }
+}
+}
+    // Perform preorder traversal
+    root.preorder(); // Output: 1 2 4 5 3 6
+}
